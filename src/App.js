@@ -1,9 +1,10 @@
+import Search from './components/search/Search.js';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-     <p>Добре дошли в ЕСРИ България</p>
+     <Search/>
     </div>
   );
 }
