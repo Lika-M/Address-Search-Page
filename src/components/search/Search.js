@@ -1,12 +1,13 @@
 import { useState, useEffect } from 'react';
 
 import * as service from '../../services/addressService.js'
+import AddressList from '../list/AddressList.js';
 import styles from './Search.module.css';
 
 const Search = () => {
     const [search, setSearch] = useState('');
     const [selected, setSelected] = useState({ list: [], display: false });
-    const [result, setResult] = useState([])
+    const [result, setResult] = useState([]);
 
     useEffect(() => {
         if (search.length > 0) {
@@ -19,14 +20,21 @@ const Search = () => {
     const onChange = (ev) => {
         setSearch(ev.target.value);
         setSelected({ list: [], display: false });
+        // setResult([]);
     };
 
     const onClose = () => {
         setSearch('');
         setSelected({ list: [], display: false });
+        setResult([]);
     };
 
-    const onFocus = () => {
+    const onFocus = (ev) => {
+        if(ev.target.value === search){
+            // setResult([]);
+            return;
+        }
+      
         setSelected(state => ({
             ...state,
             display: true
@@ -50,12 +58,12 @@ const Search = () => {
     }
 
     return (
-        <section>
-            <article className={styles['header']}>
+       
+        <section className={styles.search}>
+            <article className={styles.header}>
                 <img className={styles['header-img']} src="images/geo.jpg" alt="Geo" />
                 <h1 className={styles['header-title']}>Търсене на адреси</h1>
             </article>
-
 
             <article className={styles.content}>
                 <div className={styles['content-image-wrapper']}>
@@ -99,7 +107,9 @@ const Search = () => {
                     )}
                 </div>
             </article>
+        {result.length > 0 && <AddressList list={result}/>}
         </section>
+     
     );
 
 }
