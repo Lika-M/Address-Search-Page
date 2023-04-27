@@ -1,0 +1,87 @@
+.title {
+  text-align: center;
+    color: rgb(115, 90, 90);
+}
+
+.address {
+    max-width: 70%;
+    margin: 20px auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 3%;
+}
+
+.address-content {
+    /* max-height: 68px; */
+    background-color: #fff;
+    margin: 15px auto;
+    /* border-radius: 10px; */
+    box-shadow: 0px 1px 2px 1px rgba(0, 0, 0, 0.3);
+    display: flex;
+   width: 450px;
+    max-width: 700px;
+}
+
+.address-content-preview {
+    /* background: URL('/public'); */
+    flex-basis: 20%;
+    /* width: 80px; */
+    color: #fff;
+    /* padding: 7px; */
+    max-width: 250px;
+    position: relative;
+}
+
+.address-content-preview-wrapper{
+    width: 80px;
+    min-height: 100px;
+    max-height: 150px;
+    overflow: hidden;
+    margin-right: 15px;
+}
+
+.address-content-preview-img{
+    object-fit: cover;
+    height: 100%;
+    opacity: 0.3;
+}
+
+.address-content-wrapper {
+    margin: 0 auto;
+    width: 25%;
+    position: absolute;
+    top: 45px;
+    left: 30px;
+    z-index: 2;
+}
+
+.address-content-wrapper-icon {
+    color: #5a90e7;
+    /* padding: 40px; */
+}
+
+.address-info {
+    flex-basis: 80%;
+    position: relative;
+    flex-grow: 1;
+    /* margin-left: 20px; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding: 5px;
+}
+
+.address-info-title {
+    margin: 5px 0;
+    color: grey;
+}
+
+.address-info-content {
+    margin: 8px 0;
+    color: rgb(115, 90, 90);
+}
+
+.address-info-location{
+    color: rgb(115, 90, 90);
+}
