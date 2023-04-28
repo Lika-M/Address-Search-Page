@@ -1,64 +1,83 @@
 import { useState, useEffect } from 'react';
 
 import * as service from '../../services/addressService.js'
-import AddressList from '../list/AddressList.js';
+import AddressList from '../list/addressList/AddressList.js';
 import styles from './Search.module.css';
 
 const Search = () => {
     const [search, setSearch] = useState('');
     const [selected, setSelected] = useState({ list: [], display: false });
-    const [result, setResult] = useState([]);
+    const [result, setResult] = useState({ data: [], isFound: false });
 
     useEffect(() => {
         if (search.length > 0) {
             service.getSuggested(search)
                 .then(res => setSelected({ list: res, display: true }))
-            //.catch(err => console.log(err))
+                .catch(err => console.log(err))
         }
     }, [search])
 
     const onChange = (ev) => {
         setSearch(ev.target.value);
         setSelected({ list: [], display: false });
-        // setResult([]);
+        setResult(state => ({
+            ...state,
+            isFound: false
+        }));
     };
 
-    const onClose = () => {
+    const onClose = (ev) => {
+        if (ev.target.tagName === 'BUTTON') {
+            return;
+        }
         setSearch('');
         setSelected({ list: [], display: false });
-        setResult([]);
     };
 
     const onFocus = (ev) => {
-        if(ev.target.value === search){
-            // setResult([]);
-            return;
+        if (ev.target.value === search) {
+            setResult(state => ({
+                ...state,
+                isFound: false
+            }));
         }
-      
         setSelected(state => ({
             ...state,
             display: true
         }));
     };
 
-    const onSelect = (ev) => {
-        if (ev.target.textContent.length === 0) {
+    const onSelectHandler = (ev) => {
+        getData(ev.target.textContent);
+    };
+
+    const onSubmitHandler = (ev) => {
+        ev.preventDefault();
+
+        const formData = new FormData(ev.target);
+        const searchData = Object.fromEntries(formData).search.trim().split(',').join(', ');
+
+        getData(searchData);
+    };
+
+    const getData = (data) => {
+        const currentList = result.data.map(x => x.address.toLowerCase());
+
+        if (data === '' || currentList.includes(data.toLowerCase())) {
             return;
         }
 
-        service.getAddress(ev.target.textContent)
-            .then(res => setResult(res))
-        // .catch(err => console.log(err));
+        service.getAddress(data)
+            .then(res => setResult({ data: res, isFound: true }))
+            .catch(err => console.log(err));
 
         setSelected(state => ({
             ...state,
             display: false
         }));
-
-    }
+    };
 
     return (
-       
         <section className={styles.search}>
             <article className={styles.header}>
                 <img className={styles['header-img']} src="images/geo.jpg" alt="Geo" />
@@ -70,7 +89,7 @@ const Search = () => {
                     <img className={styles['content-image']} src="images/bulgaria-map.jpg" alt="Map" />
                 </div>
                 <div className={styles['container']}>
-                    <form className={styles['container-form']}>
+                    <form className={styles['container-form']} onSubmit={onSubmitHandler}>
                         <input
                             type="text"
                             className={styles['container-form-input']}
@@ -80,14 +99,13 @@ const Search = () => {
                             value={search}
                             placeholder="Въведете населено място или адрес"
                         />
-
                         {search.length > 0 &&
                             <button
                                 className={styles['container-form-close-btn']}
-                                onClick={onClose}>
+                                onClick={onClose}
+                            >
                                 <span> &#10005;</span>
                             </button>}
-
                         <button type="submit"
                             className={styles['container-form-btn']} >
                             <span className={styles['container-form-btn-search']}> &#9740;</span>
@@ -99,7 +117,7 @@ const Search = () => {
                             (<li
                                 key={x.magicKey}
                                 className={styles['container-result-item']}
-                                onClick={onSelect}
+                                onClick={onSelectHandler}
                             >
                                 {x.text}
                             </li>))}
@@ -107,9 +125,16 @@ const Search = () => {
                     )}
                 </div>
             </article>
-        {result.length > 0 && <AddressList list={result}/>}
+            {result.data.length > 0 &&
+                <>
+                    <h2 className={styles.title}>Намерени съвпадения:</h2>
+                    <AddressList list={result.data} />
+                </>}
+            {!result.data.length && result.isFound &&
+                <h2 className={styles.title}>Не са открити съвпадения:</h2>}
         </section>
-     
+
+
     );
 
 }

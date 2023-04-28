@@ -97,6 +97,11 @@
     cursor: pointer;
 }
 
-container-.result-item:hover {
+.container-result-item:hover {
     background-color: rgb(244, 244, 244);
 }
+
+.title {
+    text-align: center;
+      color: rgb(115, 90, 90);
+  }
