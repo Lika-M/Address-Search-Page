@@ -1,0 +1,29 @@
+.aside {
+    flex-basis: 30%;
+    margin-right:  35px;
+}
+
+.list {
+    /* font-size: 14px; */
+}
+
+.bold-item,
+.item {
+    padding: 8px 12px;
+    border-bottom: .5px solid rgb(219, 217, 217);
+    cursor: pointer;
+}
+
+.bold-item{
+font-weight: bold;
+}
+
+.rectangle{
+    margin-top: 35px;
+    padding: 18px;
+    background-color: rgb(240, 246, 250);
+    margin-bottom: 25px;
+    font-size: 12px;
+    line-height: 18px;
+    box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.35);
+}

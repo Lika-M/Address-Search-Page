@@ -1,12 +1,3 @@
-.address {
-    max-width: 70%;
-    margin: 20px auto;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 3%;
-}
-
 .address-content {
     /* max-height: 68px; */
     background-color: #fff;

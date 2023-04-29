@@ -1,12 +1,15 @@
 import AddressItem from '../addressItem/AddressItem.js';
+import styles from './AddressList.module.css';
 
 const AddressList = ({ list }) => {
 
     return (
-        <section className={styles.address}>
-            {list.map((x, i) => <AddressItem key={i} content={x} />)}
-        </section>
-
+        
+        <div className={styles.main}>
+            <section className={styles.address}>
+                {list.map((x, i) => <AddressItem key={i} content={x} />)}
+            </section>
+        </div>
     );
 }
 
