@@ -79,16 +79,17 @@ const Search = () => {
     };
 
     return (
-        <main className={styles.search}>
+        <div className={styles.search}>
             <header className={styles.header}>
                 <img className={styles['header-img']} src="images/geo.jpg" alt="Geo" />
                 <h1 className={styles['header-title']}>Търсене на адреси</h1>
             </header>
+
             <section className={styles.main}>
                 <Aside />
                 <article className={styles.content}>
                     <div className={styles['content-image-wrapper']}>
-                        <img className={styles['content-image']} src="images/bulgaria-map1.jpg" alt="Map" />
+                        <img className={styles['content-image']} src="images/bulgaria-map.jpg" alt="Map" />
                     </div>
                     <div className={styles['container']}>
                         <form className={styles['container-form']} onSubmit={onSubmitHandler}>
@@ -114,31 +115,28 @@ const Search = () => {
                             </button>
                         </form>
                         {selected.list.length > 0 && selected.display && (
-                            <ul className={styles['container-result']}>
-                                {selected.list.map(x =>
-                                (<li
-                                    key={x.magicKey}
-                                    className={styles['container-result-item']}
-                                    onClick={onSelectHandler}
-                                >
-                                    {x.text}
-                                </li>))}
-                            </ul>
+                            <div className={styles['container-result-wrapper']}>
+                                <ul className={styles['container-result-list']}>
+                                    {selected.list.map(x =>
+                                    (<li
+                                        key={x.magicKey}
+                                        className={styles['container-result-item']}
+                                        onClick={onSelectHandler}
+                                    >
+                                        {x.text}
+                                    </li>))}
+                                </ul>
+                            </div>
                         )}
                     </div>
                 </article>
             </section>
+
             <div className={styles.separator}></div>
-            <section className={styles.list}>
-                {result.data.length > 0 &&
-                    <div>
-                        <h2 className={styles['list-title']}>Намерени съвпадения:</h2>
-                        <AddressList list={result.data} />
-                    </div>}
-                {!result.data.length && result.isFound &&
-                    <h2 className={styles['list-title']}>Не са открити съвпадения:</h2>}
-            </section>
-        </main>
+
+            <AddressList list={result.data} isFound={result.isFound} />
+
+        </div>
     );
 
 }

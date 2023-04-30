@@ -1,15 +1,20 @@
 import AddressItem from '../addressItem/AddressItem.js';
 import styles from './AddressList.module.css';
 
-const AddressList = ({ list }) => {
+const AddressList = ({ list, isFound }) => {
 
     return (
-        
-        <div className={styles.main}>
-            <section className={styles.address}>
-                {list.map((x, i) => <AddressItem key={i} content={x} />)}
-            </section>
-        </div>
+        <section className={styles.list}>
+            {list.length > 0 &&
+                <>
+                    <h2 className={styles['list-title']}>Намерени съвпадения:</h2>
+                    <div className={styles.address}>
+                        {list.map((x, i) => <AddressItem key={i} content={x} />)}
+                    </div>
+                </>}
+            {!list.length && isFound &&
+                <h2 className={styles['list-title']}>Не са открити съвпадения:</h2>}
+        </section>
     );
 }
 
