@@ -1,10 +1,6 @@
 .aside {
     flex-basis: 30%;
-    margin-right:  35px;
-}
-
-.list {
-    /* font-size: 14px; */
+    margin-right: 35px;
 }
 
 .bold-item,
@@ -14,16 +10,74 @@
     cursor: pointer;
 }
 
-.bold-item{
-font-weight: bold;
+.bold-item {
+    font-weight: bold;
 }
 
-.rectangle{
+.rectangle {
     margin-top: 35px;
     padding: 18px;
     background-color: rgb(240, 246, 250);
-    margin-bottom: 25px;
     font-size: 12px;
     line-height: 18px;
     box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.35);
+}
+
+@media (max-width: 1200px) {
+    .bold-item,
+    .item {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 1000px) {
+    .aside {
+        flex-basis: 32%;
+        margin-right: 25px;
+    }
+
+    .bold-item,
+    .item {
+        font-size: 14px;
+    }
+
+    .rectangle {
+        display: none;
+    }
+}
+
+@media (max-width: 800px) {
+    .aside {
+        flex-basis: 38%;
+        margin-right: unset;
+        position: absolute;
+        top: 15px;
+    }
+
+    .list {
+        display: flex;
+        justify-content: center;
+        margin: 0;
+        flex-wrap: wrap;
+        position: relative;
+        z-index: 1;
+    }
+
+    .bold-item, .item {
+        margin: 0 8px;
+    }
+}
+
+@media (max-width: 600px){
+    .bold-item, .item {
+        padding: 6px 9px;
+    }
+
+    .rectangle {
+        display: none;
+    }
+
+    .aside {
+        display: none;
+    }
 }
