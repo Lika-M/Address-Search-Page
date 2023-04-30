@@ -1,0 +1,21 @@
+.header {
+    height: 120px;
+
+    overflow: hidden;
+    position: relative;
+}
+
+.header-img {
+    height: 100%;
+}
+
+.header-title {
+    margin: 5px;
+    position: absolute;
+    bottom: 15px;
+    left: 50px;
+    z-index: 1;
+    font-size: 2em;
+    font-weight: 500;
+    color: #fff;
+}

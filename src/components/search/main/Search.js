@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
 
-import * as service from '../../services/addressService.js'
-import AddressList from '../list/addressList/AddressList.js';
-import Aside from './aside/Aside.js';
+import * as service from '../../../services/addressService.js'
+import AddressList from '../../list/addressList/AddressList.js';
+import Aside from '../aside/Aside.js';
+import Footer from '../footer/Footer.js';
+import Header from '../header/Header.js';
 import styles from './Search.module.css';
 
 const Search = () => {
@@ -80,10 +82,8 @@ const Search = () => {
 
     return (
         <div className={styles.search}>
-            <header className={styles.header}>
-                <img className={styles['header-img']} src="images/geo.jpg" alt="Geo" />
-                <h1 className={styles['header-title']}>Търсене на адреси</h1>
-            </header>
+
+            <Header />
 
             <section className={styles.main}>
                 <Aside />
@@ -126,24 +126,14 @@ const Search = () => {
                                         {x.text}
                                     </li>))}
                                 </ul>
-                            </div>
-                        )}
+                            </div>)}
                     </div>
                 </article>
             </section>
 
-          
-
             <AddressList list={result.data} isFound={result.isFound} />
 
-            <footer className={styles.footer}>
-                <>
-                    <div className={styles.separator}></div>
-                    <div className={styles['footer-text']}>
-                        &#10026; designed by Lika-M &copy; 2023 &#10026;
-                    </div>
-                </>
-            </footer>
+            <Footer />
 
         </div>
     );
