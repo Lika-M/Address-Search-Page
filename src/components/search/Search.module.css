@@ -1,5 +1,5 @@
 .search {
-    min-height: calc(100vh + 1px);
+    min-height: calc(100vh - 50px);
 }
 
 .header {
@@ -104,17 +104,17 @@
 }
 
 .container-result-wrapper {
+    width: 100%;
     position: absolute;
-    top: 35px;
+    top: 38px;
     overflow-y: auto;
-    visibility: visible;
     max-height: 300px;
+    visibility: visible;
 }
 
 .container-result-list {
     background-color: #fff;
     margin-top: 5px;
-
 }
 
 .container-result-item {
@@ -136,8 +136,22 @@
     background-color: rgb(219, 217, 217);
 }
 
+.footer {
+    width: 100%;
+    text-align: center;
+    font-size: 13px;
+    color: rgb(162, 160, 160);
+    position: absolute;
+    left: 50%;
+    bottom: -40px;
+    transform: translate(-50%, 40%);
+}
+
+.footer-text {
+    padding: 15px;
+}
+
 @media (max-width: 1400px) {
-   
     .header-title {
         font-size: 30px;
     }
@@ -150,6 +164,10 @@
 
     .content-image-wrapper {
         height: 21em;
+    }
+
+    .container-result-wrapper {
+        max-height: 250px;
     }
 }
 
@@ -175,6 +193,10 @@
 
     .content-image-wrapper {
         height: 19em;
+    }
+
+    .container-result-wrapper {
+        max-height: 220px;
     }
 }
 
@@ -205,10 +227,14 @@
     .container-result-item {
         font-size: 14px;
     }
+
+    .container-result-wrapper {
+        max-height: 180px;
+    }
 }
 
 @media (max-width: 800px) {
-    
+
     .main {
         flex-direction: column;
         height: 26em;
@@ -219,9 +245,16 @@
     .content-image-wrapper {
         height: 23em;
     }
+
+    .container-result-wrapper {
+        max-height: 210px;
+    }
 }
 
 @media (max-width: 600px) {
+    .search {
+        min-height: 50vh;
+    }
     .main {
         height: 20em;
         max-width: 85%;
@@ -233,40 +266,62 @@
     .content-image-wrapper {
         height: 17em;
     }
+
+    .container-result-wrapper {
+        max-height: 195px;
+    }
 }
 
 @media (max-width: 520px) {
     .header {
         height: 60px;
     }
+
     .main {
-        height: 18em;
+        height: 17em;
         padding-top: 25px;
         padding-bottom: 20px;
     }
 
     .content-image-wrapper {
-        height: 15em;
+        height: 14em;
+    }
+
+    .container-result-wrapper {
+        max-height: 160px;
     }
 }
 
+
 @media (max-width: 455px) {
     .main {
-        height: 16em;
+        height: 15em;
     }
 
     .content-image-wrapper {
-        height: 13em;
+        height: 12em;
     }
 
     .container-result-item {
         padding: 5px;
     }
+
+    .container-result-wrapper {
+        max-height: 135px;
+    }
 }
 
 @media (max-width: 400px) {
     .main {
-        height: 15em;
+        height: 14em;
         margin-top: 10px;
+    }
+
+    .content-image-wrapper {
+        height: 11em;
+    }
+
+    .container-result-wrapper {
+        max-height: 120px;
     }
 }

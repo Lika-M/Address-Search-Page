@@ -1,7 +1,6 @@
-
 .list {
     max-width: 70%;
-    margin: 50px auto;
+    margin: 0 auto 50px auto;
 }
 .list-title {
     text-align: center;
@@ -10,8 +9,42 @@
 
 .address {
     margin: 20px auto;
+    margin-bottom: 50px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     gap: 3%;
+}
+
+.separator {
+    content: '';
+    width: 100%;
+    margin: 0 auto;
+    height: 0.5px;
+    background-color: rgb(219, 217, 217);
+    margin-bottom: 30px;
+}
+
+@media (max-width: 1200px){
+    .list {
+        max-width: 75%;
+    }
+}
+
+@media (max-width: 1000px){
+    .list {
+        max-width: 65%;
+    }
+}
+
+/* @media (max-width: 800px){
+    .list {
+        max-width: 65%;
+    }
+} */
+
+@media (max-width: 600px){
+    .list {
+        max-width: 80%;
+    }
 }

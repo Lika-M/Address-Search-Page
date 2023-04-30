@@ -75,7 +75,24 @@
 }
 
 @media (max-width: 1200px) {
-    /* .header-title {
-        font-size: 16px;
-    } */
+    .address-content-wrapper {
+        width: 30%;
+    }
+}
+@media (max-width: 1000px){
+    .address-content-wrapper {
+        width: 20%;
+    }
+}
+
+@media (max-width: 800px){
+    .address-content-wrapper {
+        width: 25%;
+    }
+}
+
+@media (max-width: 400px){
+    .address-content-wrapper {
+        width: 30%;
+    }
 }
