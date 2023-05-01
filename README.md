@@ -3,8 +3,8 @@
 This аpp is a simple page for looking up addresses, written for a recruiter's assignment. JavaScript, HTML and CSS have been used, with the aid of React, functional components and React hooks. 
 
 It contains the following UI components:
-`•` Search: Adds suggestions with every keystroke while the user is typing the address in the input field
-`•` List of results found
+1. Search: Adds suggestions with every keystroke while the user is typing the address in the input field
+2. List of results found
 
 Technical implementation: Data fetching, error handling, responsive design, user friendly UI.
 
