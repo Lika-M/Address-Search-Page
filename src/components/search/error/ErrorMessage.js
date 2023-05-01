@@ -7,7 +7,6 @@ const ErrorMessage = ({error}) => {
             <span className={styles['error-content']}>{error.message}</span>
             <p className={styles['error-message']}>Моля, опитайте отново!</p>
         </div>
-
     );
 }
 
