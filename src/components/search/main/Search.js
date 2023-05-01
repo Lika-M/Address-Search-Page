@@ -5,18 +5,20 @@ import AddressList from '../../list/addressList/AddressList.js';
 import Aside from '../aside/Aside.js';
 import Footer from '../footer/Footer.js';
 import Header from '../header/Header.js';
+import ErrorMessage from '../error/ErrorMessage.js';
 import styles from './Search.module.css';
 
 const Search = () => {
     const [search, setSearch] = useState('');
     const [selected, setSelected] = useState({ list: [], display: false });
     const [result, setResult] = useState({ data: [], isFound: false });
+    const [error, setError] = useState({});
 
     useEffect(() => {
         if (search.length > 0) {
             service.getSuggested(search)
                 .then(res => setSelected({ list: res, display: true }))
-                .catch(err => console.log(err))
+                .catch(err => setError(err));
         }
     }, [search])
 
@@ -27,6 +29,7 @@ const Search = () => {
             ...state,
             isFound: false
         }));
+        setError({});
     };
 
     const onClose = (ev) => {
@@ -35,6 +38,7 @@ const Search = () => {
         }
         setSearch('');
         setSelected({ list: [], display: false });
+        setError({});
     };
 
     const onFocus = (ev) => {
@@ -48,6 +52,7 @@ const Search = () => {
             ...state,
             display: true
         }));
+        setError({});
     };
 
     const onSelectHandler = (ev) => {
@@ -72,7 +77,7 @@ const Search = () => {
 
         service.getAddress(data)
             .then(res => setResult({ data: res, isFound: true }))
-            .catch(err => console.log(err));
+            .catch(err => setError(err));
 
         setSelected(state => ({
             ...state,
@@ -131,7 +136,9 @@ const Search = () => {
                 </article>
             </section>
 
-            <AddressList list={result.data} isFound={result.isFound} />
+            {result.data.length > 0 && <AddressList list={result.data} isFound={result.isFound} />}
+
+            {error.message && <ErrorMessage error={error} />}
 
             <Footer />
 

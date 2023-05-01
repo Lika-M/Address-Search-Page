@@ -11,7 +11,7 @@ export async function getSuggested(text) {
             method: 'GET'
         })
 
-        if (response.ok === false) {
+        if (!response.ok) {
             const error = await response.json();
             throw new Error(error);
         }
@@ -20,7 +20,7 @@ export async function getSuggested(text) {
         return data.suggestions;
 
     } catch (err) {
-        console.log(err);
+        throw new Error(err.message);
     }
 
 }
@@ -41,7 +41,7 @@ export async function getAddress(address) {
         return result.candidates;
 
     } catch (err) {
-        console.log(err)
+        throw new Error(err.message);
     }
 
 }
