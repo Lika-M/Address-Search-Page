@@ -207,6 +207,7 @@
 
     .content-image-wrapper {
         height: 23em;
+        top: -28px;
     }
 
     .container-result-wrapper {

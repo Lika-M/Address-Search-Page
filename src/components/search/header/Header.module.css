@@ -1,6 +1,5 @@
 .header {
     height: 120px;
-
     overflow: hidden;
     position: relative;
 }
@@ -13,9 +12,60 @@
     margin: 5px;
     position: absolute;
     bottom: 15px;
-    left: 50px;
+    left: 80px;
     z-index: 1;
     font-size: 2em;
     font-weight: 500;
     color: #fff;
+}
+
+@media (max-width: 1200px){
+    .header {
+        height: 100px;
+    }
+    .header-title {
+        bottom: 12px;
+        left: 70px;
+        font-size: 26px;
+    }
+}
+
+@media (max-width: 1000px){
+    .header {
+        height: 90px;
+    }
+    .header-title {
+        bottom: 10px;
+        left: 60px;
+        font-size: 24px;
+    }
+}
+
+@media (max-width: 800px){
+    
+    .header-title {
+        font-size: 22px;
+    }
+}
+
+@media (max-width: 600px){
+    .header {
+        height: 85px;
+    }
+    .header-title {
+        bottom: 8px;
+        left: 50px;
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 400px){
+    .header {
+        height: 80px;
+    }
+    .header-title {
+        bottom: 6px;
+        left: 40px;
+        font-size: 18px;
+    }
 }

@@ -4,7 +4,7 @@
 }
 .list-title {
     text-align: center;
-    color: rgb(115, 90, 90);
+    color: rgb(80, 62, 62);
 }
 
 .address {
@@ -29,22 +29,28 @@
     .list {
         max-width: 75%;
     }
+
+    .list-title {
+        font-size: 20px;
+    }
 }
 
 @media (max-width: 1000px){
     .list {
         max-width: 65%;
     }
-}
 
-/* @media (max-width: 800px){
-    .list {
-        max-width: 65%;
+    .list-title {
+        font-size: 18px;
     }
-} */
+}
 
 @media (max-width: 600px){
     .list {
         max-width: 80%;
+    }
+
+    .list-title {
+        font-size: 16px;
     }
 }
