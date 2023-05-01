@@ -10,21 +10,21 @@ import styles from './Search.module.css';
 
 const Search = () => {
     const [search, setSearch] = useState('');
-    const [selected, setSelected] = useState({ list: [], display: false });
+    const [selected, setSelected] = useState({ list: [], visibility: 'hidden' });
     const [result, setResult] = useState({ data: [], isFound: false });
     const [error, setError] = useState({});
 
     useEffect(() => {
         if (search.length > 0) {
             service.getSuggested(search)
-                .then(res => setSelected({ list: res, display: true }))
+                .then(res => setSelected({ list: res, visibility: 'visible' }))
                 .catch(err => setError(err));
         }
     }, [search])
 
     const onChange = (ev) => {
-        setSearch(ev.target.valu);
-        setSelected({ list: [], display: false });
+        setSearch(ev.target.value);
+        setSelected({ list: [], visibility: 'hidden' });
         setResult(state => ({
             ...state,
             isFound: false
@@ -37,7 +37,7 @@ const Search = () => {
             return;
         }
         setSearch('');
-        setSelected({ list: [], display: false });
+        setSelected({ list: [], visibility: 'hidden' });
         setError({});
     };
 
@@ -50,10 +50,17 @@ const Search = () => {
         }
         setSelected(state => ({
             ...state,
-            display: true
+            visibility: 'visible'
         }));
         setError({});
     };
+
+    const onBlur = () => {
+        setSelected(state => ({
+            ...state,
+            visibility: 'hidden'
+        }));
+    }
 
     const onSelectHandler = (ev) => {
         getData(ev.target.textContent);
@@ -81,7 +88,7 @@ const Search = () => {
 
         setSelected(state => ({
             ...state,
-            display: false
+            visibility: 'hidden'
         }));
     };
 
@@ -104,6 +111,7 @@ const Search = () => {
                                 name="search"
                                 onChange={onChange}
                                 onFocus={onFocus}
+                                onBlur={onBlur}
                                 value={search}
                                 placeholder="Въведете населено място или адрес"
                             />
@@ -119,8 +127,9 @@ const Search = () => {
                                 <span className={styles['container-form-btn-search']}> &#9740;</span>
                             </button>
                         </form>
-                        {selected.list.length > 0 && selected.display && (
-                            <div className={styles['container-result-wrapper']}>
+                        {selected.list.length > 0 && (
+                            <div className={styles['container-result-wrapper']}
+                                style={{ visibility: selected.visibility }}>
                                 <ul className={styles['container-result-list']}>
                                     {selected.list.map(x =>
                                     (<li
