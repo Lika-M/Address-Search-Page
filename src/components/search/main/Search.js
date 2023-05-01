@@ -7,10 +7,12 @@ import Footer from '../footer/Footer.js';
 import Header from '../header/Header.js';
 import ErrorMessage from '../error/ErrorMessage.js';
 import styles from './Search.module.css';
+import Preloader from '../preloader/Preloader.js';
 
 const Search = () => {
     const [search, setSearch] = useState('');
     const [selected, setSelected] = useState({ list: [], visibility: 'hidden' });
+    const [isLoading, setIsLoading] = useState(false);
     const [result, setResult] = useState({ data: [], isFound: false });
     const [error, setError] = useState({});
 
@@ -83,8 +85,15 @@ const Search = () => {
         if (data === '' || currentList.includes(data.toLowerCase())) {
             return;
         }
+        setIsLoading(true);
         service.getAddress(data)
-            .then(res => setResult({ data: res, isFound: true }))
+            .then(res => {
+                setTimeout(() => {
+                    setResult({ data: res, isFound: true });
+                    setIsLoading(false);
+
+                }, 3000)
+            })
             .catch(err => setError(err));
 
         setSelected(state => ({
@@ -145,9 +154,14 @@ const Search = () => {
                 </article>
             </section>
 
-            {result.data.length > 0 && <AddressList list={result.data} isFound={result.isFound} />}
+            {isLoading
+                ? <Preloader/>
+                : <>
+                    {result.data.length > 0 && <AddressList list={result.data} isFound={result.isFound} />}
 
-            {error.message && <ErrorMessage error={error} />}
+                    {error.message && <ErrorMessage error={error} />}
+                </>}
+
 
             <Footer />
 

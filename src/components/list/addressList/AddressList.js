@@ -17,8 +17,8 @@ const AddressList = ({ list, isFound }) => {
                 <>
                     <div className={styles.separator}></div>
                     <h2 className={styles['list-title']}>Не са открити съвпадения:</h2>
-                    </>}
-           
+                </>}
+
         </section>
     );
 }
