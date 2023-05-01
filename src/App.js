@@ -1,11 +1,14 @@
 import Search from './components/search/main/Search.js';
+import ErrorBoundary from './components/errorBoundary/ErrorBoundary.js';
 import './App.css';
 
 function App() {
   return (
-    <main className="App">
-     <Search/>
-    </main>
+    <ErrorBoundary>
+      <div className="App">
+        <Search />
+      </div>
+    </ErrorBoundary>
   );
 }
 
