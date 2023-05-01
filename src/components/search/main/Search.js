@@ -55,12 +55,14 @@ const Search = () => {
         setError({});
     };
 
-    const onBlur = () => {
-        setSelected(state => ({
-            ...state,
-            visibility: 'hidden'
-        }));
-    }
+    const onBlur = (ev) => {
+        if (ev.target.tagName !== 'LI' && ev.target.tagName !== 'INPUT') {
+            setSelected(state => ({
+                ...state,
+                visibility: 'hidden'
+            }));
+        }
+    };
 
     const onSelectHandler = (ev) => {
         getData(ev.target.textContent);
@@ -81,7 +83,6 @@ const Search = () => {
         if (data === '' || currentList.includes(data.toLowerCase())) {
             return;
         }
-
         service.getAddress(data)
             .then(res => setResult({ data: res, isFound: true }))
             .catch(err => setError(err));
@@ -97,7 +98,7 @@ const Search = () => {
 
             <Header />
 
-            <section className={styles.main}>
+            <section className={styles.main} onClick={onBlur}>
                 <Aside />
                 <article className={styles.content}>
                     <div className={styles['content-image-wrapper']}>
@@ -111,7 +112,6 @@ const Search = () => {
                                 name="search"
                                 onChange={onChange}
                                 onFocus={onFocus}
-                                onBlur={onBlur}
                                 value={search}
                                 placeholder="Въведете населено място или адрес"
                             />
