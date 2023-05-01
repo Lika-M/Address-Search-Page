@@ -86,13 +86,11 @@ const Search = () => {
             return;
         }
         setIsLoading(true);
+
         service.getAddress(data)
             .then(res => {
-                setTimeout(() => {
-                    setResult({ data: res, isFound: true });
-                    setIsLoading(false);
-
-                }, 3000)
+                setResult({ data: res, isFound: true });
+                setIsLoading(false);
             })
             .catch(err => setError(err));
 
@@ -104,9 +102,7 @@ const Search = () => {
 
     return (
         <div className={styles.search}>
-
             <Header />
-
             <section className={styles.main} onClick={onBlur}>
                 <Aside />
                 <article className={styles.content}>
@@ -155,19 +151,15 @@ const Search = () => {
             </section>
 
             {isLoading
-                ? <Preloader/>
+                ? <Preloader />
                 : <>
                     {result.data.length > 0 && <AddressList list={result.data} isFound={result.isFound} />}
-
                     {error.message && <ErrorMessage error={error} />}
                 </>}
 
-
             <Footer />
-
         </div>
     );
-
 }
 
 export default Search;

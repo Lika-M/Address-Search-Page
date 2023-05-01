@@ -1,12 +1,21 @@
-# Getting Started with Create React App
+## About The Project
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This аpp is a simple page for looking up addresses, written for a recruiter's assignment. JavaScript, HTML and CSS have been used, with the aid of React, functional components and React hooks. 
 
-## Available Scripts
+It contains the following UI components:
+• Search : Adds suggestions with every keystroke while the user is typing the address in the input field
+• List of results found
 
-In the project directory, you can run:
+Technical implementation: Data fetching, error handling, responsive design, user friendly UI.
 
-### `npm start`
+## Quick Start:
+Clone the repository and do following:
+
+### Install dependencies 
+`npm install`
+
+### In the project directory, you can run:
+`npm start`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
