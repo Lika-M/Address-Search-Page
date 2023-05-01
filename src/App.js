@@ -1,5 +1,5 @@
 import Search from './components/search/main/Search.js';
-import ErrorBoundary from './components/errorBoundary/ErrorBoundary.js';
+import ErrorBoundary from './errorBoundary/ErrorBoundary.js';
 import './App.css';
 
 function App() {

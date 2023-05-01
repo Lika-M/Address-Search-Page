@@ -23,7 +23,7 @@ const Search = () => {
     }, [search])
 
     const onChange = (ev) => {
-        setSearch(ev.target.value);
+        setSearch(ev.target.valu);
         setSelected({ list: [], display: false });
         setResult(state => ({
             ...state,

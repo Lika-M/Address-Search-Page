@@ -12,3 +12,11 @@
 .footer-text {
     padding: 15px;
 }
+
+.separator {
+    content: '';
+    width: 100%;
+    margin: 0 auto;
+    height: 0.5px;
+    background-color: rgb(219, 217, 217);
+}
