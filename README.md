@@ -8,6 +8,8 @@ It contains the following UI components:
 
 Technical implementation: Data fetching, error handling, responsive design, user friendly UI.
 
+<img src="/public/images/esri.jpg" width="300">
+
 ## Quick Start:
 Clone the repository and do following:
 
