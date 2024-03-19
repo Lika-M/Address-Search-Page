@@ -8,6 +8,11 @@ It contains the following UI components:
 
 Technical implementation: Data fetching, error handling, responsive design, user friendly UI.
 
+## Technical Description
+
+### Built with
+**JavaScript**, **HTML**, **CSS**, **ReactJS**
+
 <img src="/public/images/esri.jpg" width="300">
 
 ## Quick Start:
